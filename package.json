@@ -3,6 +3,9 @@
   "version": "0.5.0",
   "description": "Serverless Testing Examples",
   "main": "",
+  "engines": {
+    "node": "8.10"
+  },
   "scripts": {
     "test": "NODE_ENV=test PORT=9100 ./node_modules/.bin/mocha --opts mocha.opts",
     "offline": "sls offline start"
