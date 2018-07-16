@@ -3,7 +3,8 @@
 [ ![Codeship Status for didil/serverless-testing-examples](https://app.codeship.com/projects/19935a10-6b14-0136-e048-5a63a4ca7788/status?branch=master)](https://app.codeship.com/projects/298157)
 
 This repository illustrates some strategies to test apps built using [Serverless framework](https://github.com/serverless/serverless).
-I've published an article about this here: [Serverless Testing Strategies]()
+
+I've published an article about this on Medium: [Serverless Testing Strategies](https://medium.com/@didil/serverless-testing-strategies-393bffb0eef8)
 
 
 ## Setup
@@ -27,6 +28,37 @@ $ touch env.yml
 $ npm test
 ````
 
+## Running locally
+- Start serverless offline
+````
+$ sls offline
+````
+- Send an http request with [httpie](https://httpie.org/)
+````
+$ http :3000/asyncConcat a==foo b==bar
+
+HTTP/1.1 200 OK
+Connection: keep-alive
+Date: Mon, 16 Jul 2018 12:20:24 GMT
+Transfer-Encoding: chunked
+access-control-allow-credentials: true
+access-control-allow-origin: *
+cache-control: no-cache
+content-encoding: gzip
+content-type: application/json; charset=utf-8
+vary: origin,accept-encoding
+
+{
+    "result": "foo bar"
+}
+
+
+
+````
+
+
 ## Contributions
 
 If you would like to contribute to this repo and share some interesting test scenarios/usages with the serverless community, please feel free to open a PR !
+
+You can reach me on Twitter: [@le_didil](https://twitter.com/le_didil)
