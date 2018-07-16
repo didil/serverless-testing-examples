@@ -1,0 +1,31 @@
+# NOTE: update this with your service name
+service: serverless-testing-examples
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+
+# serverless-webpack configuration
+# Enable auto-packing of external modules
+custom:
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: ${opt:stage,'dev'}
+  region: us-east-1
+  # To load environment variables externally
+  # rename env.example to env.yml and uncomment
+  # the following line. Also, make sure to not
+  # commit your env.yml.
+  #
+  environment: ${file(env.yml):${self:provider.stage}}
+
+functions:
+  asyncConcat:
+    handler: functions/asyncConcat.handler
+    events:
+      - http:
+          path: asyncConcat
+          method: get
+          cors: true
